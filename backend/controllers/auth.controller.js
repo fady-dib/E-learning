@@ -1,11 +1,12 @@
-const User = require("../models/userModel")
+const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 
-const register = async (req,res) => {
+exports.register = async (req,res) => {
     const {first_name,last_name,email,password} = req.body;
 
-    const existingUser = await User.findOne({ email });
+    const existing_user = await User.findOne({ email });
 
-    if (existingUser) return res.status(409).json({ message: "Email already exists" });
+    if (existing_user) return res.status(409).json({ message: "Email already exists" });
 
     const user = new User();
     user.first_name = first_name;
@@ -15,9 +16,25 @@ const register = async (req,res) => {
 
     await user.save();
 
-    const {password: hashedPassword, ...newUser} = user.toJSON()
-    res.status(201).json(newUser);
+    const {password: hashed_password, ...new_user} = user.toJSON()
+    res.status(201).json(new_user);
 
+
+}
+
+exports.login = async (req,res) => {
+    const {email, password} = req.body;
+
+    const existing_user = await User.findOne({ email });
+
+    if (!existing_user) return res.status(404).json({ message: "Invalid credentials" });
+
+    const is_matched = existing_user.matchPassword(password);
+    if (!is_matched) return res.status(404).json({ message: "Invalid credentials" });
+
+    const token = jwt.sign({ id: existing_user._id, email: existing_user.email }, process.env.SECRET_KEY);
+
+    res.json({ token })
 
 }
 
