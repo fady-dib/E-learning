@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+app.use(express.json())
 
 
 console.log(process.env.PORT)
@@ -8,7 +9,7 @@ console.log(process.env.PORT)
 const port = process.env.PORT || 3002
 
 const authRouter = require("./routes/auth.routes")
-app.use('auth', authRouter)
+app.use('/auth', authRouter)
 
 app.listen(port, (err) => {
     if (err) console.log(err)
