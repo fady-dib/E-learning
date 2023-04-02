@@ -84,3 +84,16 @@ exports.rejectWithdrawal = async (req,res) => {
 
 }
 
+exports.approveWithdrawal = async(req,res) => {
+    const {withdrawal_id} = req.body
+
+    try{
+        const approve = await Withdrawal.findByIdAndUpdate({_id : withdrawal_id}, {$set : {status:"approved"}},{new:true})
+        res.json(approve)
+        }
+        catch (err) {
+            console.error(err);
+            res.status(500).json({ message: "Internal server error" });
+          }
+}
+
