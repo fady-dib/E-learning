@@ -22,6 +22,10 @@ app.use('/auth', authRouter)
 const classRouter = require("./routes/class.routes")
 app.use('/class', classRouter)
 
+const fileRouter = require("./routes/file.routes")
+app.use('/file', fileRouter);
+
+
 app.listen(port, (err) => {
     if (err) console.log(err)
     console.log("Server is running on port ", port);
