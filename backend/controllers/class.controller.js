@@ -1,5 +1,5 @@
 const Class = require("../models/classModel");
-const mongoose = require("mongoose");
+const Withdrawal = require("../models/withdrawalModel");
 
 exports.createClass = async (req,res) => {
     const { name , instructor} = req.body;
@@ -15,13 +15,8 @@ exports.createClass = async (req,res) => {
 exports.enroll = async (req,res) => {
     const {class_id, student} = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(class_id)) {
-        return res.status(400).json({ error: "Invalid class_id" });
-      }
 
       try {
-
-        // const enroll = await Class.findOneAndUpdate({_id:class_id},{$push : {students : student_id}} );
 
         const class_exist = await Class.findById(class_id);
 
@@ -36,7 +31,6 @@ exports.enroll = async (req,res) => {
             class_exist
           });
    
-
       }
       catch (error) {
         res.status(500).json({ error: error.message });
@@ -50,3 +44,22 @@ exports.getClasses = async(req,res) =>{
 
     res.json(classes)
 }
+
+exports.getWithdrawals = async (req,res) => {
+
+    const withdrawals = await Withdrawal.find().populate("class","-students").populate("student","-password")
+
+    res.json(withdrawals)
+}
+
+exports.withdrawalRequest = async (req,res) => {
+    const { class_id, student_id, reason } = req.body;
+
+    const withdrawal = await Withdrawal.create({class:class_id,student:student_id,reason });
+
+    res.json({
+        message : "withdrawal request added successfully",
+        withdrawal
+    })
+}
+
