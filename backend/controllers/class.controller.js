@@ -1,3 +1,4 @@
+const { set } = require("mongoose");
 const Class = require("../models/classModel");
 const Withdrawal = require("../models/withdrawalModel");
 
@@ -47,7 +48,7 @@ exports.getClasses = async(req,res) =>{
 
 exports.getWithdrawals = async (req,res) => {
 
-    const withdrawals = await Withdrawal.find().populate("class","-students").populate("student","-password")
+    const withdrawals = await Withdrawal.find({"status":"pending"}).populate("class","-students").populate("student","-password")
 
     res.json(withdrawals)
 }
@@ -55,11 +56,31 @@ exports.getWithdrawals = async (req,res) => {
 exports.withdrawalRequest = async (req,res) => {
     const { class_id, student_id, reason } = req.body;
 
-    const withdrawal = await Withdrawal.create({class:class_id,student:student_id,reason });
+    const status = "pending"
+    try {
+    const withdrawal = await Withdrawal.create({class:class_id,student:student_id,reason, status:status });
 
     res.json({
         message : "withdrawal request added successfully",
         withdrawal
     })
+}
+catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+exports.rejectWithdrawal = async (req,res) => {
+    const {withdrawal_id} = req.body
+    try{
+    const reject = await Withdrawal.findByIdAndUpdate({_id : withdrawal_id}, {$set : {status:"rejected"}},{new:true})
+    res.json(reject)
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Internal server error" });
+      }
+
 }
 

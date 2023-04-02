@@ -15,6 +15,10 @@ const withdrawalSchema = new mongoose.Schema({
     reason:{
         type: String,
         required:true
+    },
+    status: {
+        type: String,
+        required:true
     }
     
 })
