@@ -1,0 +1,15 @@
+.btn{
+    width: 10rem;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: var(--lightyellow);
+    color: var(--brown);
+}
+.btn:hover{
+    background-color: var(--brown);
+    color: var(--lightyellow);
+}
