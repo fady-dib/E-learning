@@ -1,6 +1,6 @@
 interface inputProps {
     type : string,
-    onChange : ()=> void,
+    onChange : (e:React.FormEvent<HTMLInputElement>)=> void,
     required?: boolean,
     label: string,
     className?:string,
