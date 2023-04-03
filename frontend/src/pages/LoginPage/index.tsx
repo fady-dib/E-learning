@@ -44,7 +44,7 @@ const LoginPage = () => {
                 })
                     .then((res) => {
                         console.log(res.data)
-                        // localStorage.setItem('token',res.data.authorisation.token);
+                        localStorage.setItem('token',res.data.authorisation.token);
                     }).catch((err) => {
                         console.log(err);
                     })
