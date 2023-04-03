@@ -1,0 +1,51 @@
+.class-container{
+    display:flex;
+       background-color: var(--midnight);
+       width:75vw;
+       justify-content:space-between;
+       padding: 2%;
+       color: var(--light)
+    }
+    
+    .class-container:first-child{
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    
+    .class-container:last-child{
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    
+    .border:not(:last-child){
+        border-bottom :solid 1px var(--light)
+    }
+    
+    .table-container{
+        display:flex;
+        flex-direction: column;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        border-radius: 10px;
+      
+    }
+    
+    .classes-content{
+        padding:3%;
+    }
+    
+    .list{
+        color:var(--light)
+    }
+    
+    .btn-class{
+        background-color: var(--midnight) !important;
+        color:var(--light)
+    }
+    
+    .class{
+        align-self: center;
+        width:30%
+    }

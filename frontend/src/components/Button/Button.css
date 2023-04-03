@@ -7,9 +7,9 @@
     font-weight: bold;
     cursor: pointer;
     background-color: var(--light);
-    color: var(--midnight);
+    color: var(--dark);
 }
 .btn:hover{
-    background-color: var(--midnight);
+    background-color: var(--dark);
     color: var(--light);
 }

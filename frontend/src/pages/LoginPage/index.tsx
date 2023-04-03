@@ -56,13 +56,15 @@ const LoginPage = () => {
         <div>
             <NavBar></NavBar>
             <div className="login-container">
-                <div className="Login">
-                    <p>Login</p>
+                <div className="login">
+                    <div className="login-header">
+                        <p>Login</p>
+                    </div>
+                    <Input type="text" label="E-mail:" htmlfor="E-mail" onChange={handleEmail} ></Input>
+                    <Input type="password" label="Pasword:" htmlfor="password" onChange={handlePassword}  ></Input>
+                    <Button name="Login" handleClick={handleClick}></Button>
+                    <div className="error">{error}</div>
                 </div>
-                <Input type="text" label="E-mail:" htmlfor="E-mail" onChange={handleEmail} ></Input>
-                <Input type="password" label="Pasword:" htmlfor="password" onChange={handlePassword}  ></Input>
-                <Button name="Login" handleClick={handleClick}></Button>
-                <div>{error}</div>
             </div>
         </div>
     )

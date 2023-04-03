@@ -1,3 +1,6 @@
+import { useState } from "react";
+import Button from "../Button";
+import Enroll from "../Enroll/index";
 
 interface ClassProps {
     classData : {
@@ -7,11 +10,20 @@ interface ClassProps {
 }
 const Class =({ classData }:ClassProps)=> {
     const { name, instructor } = classData;
+
+    const [showComponent, setShowComponent] = useState(false);
+
+const handleClick = () => {
+    setShowComponent(true);
+}
+
     return (
       <>
-      <div className="user-container border">
-        <h2 className="user"> Class: {name}</h2>
-        <p className="user">Instructor: {instructor}</p>
+      <div className="class-container border">
+        <h2 className="class"> Class: {name}</h2>
+        <p className="class">Instructor: {instructor}</p>
+        <Button name="Enroll" handleClick={handleClick}></Button>
+        {showComponent && <Enroll enrollData={classData} />}
       </div>
       </>
     );
