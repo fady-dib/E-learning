@@ -1,9 +1,15 @@
 :root {
-  --lightyellow: #FEFAE0;
+  --light: #FEFAE0;
   --white: #ffffff;
-  --green: #283618;
+  --dark: #283618;
   --black: #000000;
-  --brown: #A66326;
+  --midnight: #606C38
+
+
+
+
+
+  ;
 }
 
 .body{

@@ -1,0 +1,26 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+}
+
+label{
+    margin-top: 2%;
+    color: var(--white);
+}
+.input input{
+    margin-top: 2%;
+    padding: 10px;
+    border: 1px solid  var(--light);
+    border-radius: 10px;
+    background-color: var(--dark);
+    color: var(--light);
+    width: 100%;
+    
+}
+input[type='password'] {
+    font-family: Verdana;
+    letter-spacing: 0.125em;
+}

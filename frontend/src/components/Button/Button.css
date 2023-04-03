@@ -6,10 +6,10 @@
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-    background-color: var(--lightyellow);
-    color: var(--brown);
+    background-color: var(--light);
+    color: var(--midnight);
 }
 .btn:hover{
-    background-color: var(--brown);
-    color: var(--lightyellow);
+    background-color: var(--midnight);
+    color: var(--light);
 }

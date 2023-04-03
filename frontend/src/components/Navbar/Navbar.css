@@ -1,5 +1,5 @@
 .nav-container{
-    background-color: var(--green);
+    background-color: var(--dark);
     width: 100%;
     min-height: 90px;
     display: flex;
@@ -29,7 +29,7 @@
 
 .title{
     align-self: center;
-    color: var(--lightyellow);
+    color: var(--light);
     position: relative;
     left: 50px;
     font-size: 1.3rem

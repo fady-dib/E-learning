@@ -4,14 +4,17 @@ interface inputProps {
     required?: boolean,
     label: string,
     className?:string,
-    htmlfor:string
+    htmlfor:string,
+    error? : string
+
 }
 
-const Input = ({type, onChange, required, label, className, htmlfor }:inputProps) => {
+const Input = ({type, onChange, required, label, className, htmlfor, error }:inputProps) => {
 return(
-    <div className={className}>
+    <div className={`input ${className}`}>
         <label htmlFor={htmlfor}>{label}</label>
         <input type={type} onChange={onChange} required={required}></input>
+        {error && <div className="error">{error}</div>}
     </div>
 )
 }
