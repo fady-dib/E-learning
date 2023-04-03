@@ -4,6 +4,7 @@ import NavBar from "../../components/Navbar";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button";
 import "../LoginPage/index.css"
+import { useNavigate } from "react-router-dom";
 
 
 const LoginPage = () => {
@@ -27,6 +28,8 @@ const LoginPage = () => {
         return passwordRegex.test(password);
     }
 
+    const navigate= useNavigate()
+
     const handleClick = () => {
         if (validateEmail(email)) {
             if (validatePassword(password)) {
@@ -43,8 +46,9 @@ const LoginPage = () => {
                     }
                 })
                     .then((res) => {
-                        console.log(res.data)
-                        localStorage.setItem('token',res.data.authorisation.token);
+                        console.log(res.data.token)
+                        localStorage.setItem('token',res.data.token);
+                        navigate("/classes")
                     }).catch((err) => {
                         console.log(err);
                     })

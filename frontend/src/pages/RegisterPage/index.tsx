@@ -3,6 +3,7 @@ import Input from "../../components/Input/Input"
 import NavBar from "../../components/Navbar"
 import Button from "../../components/Button"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface Data {
     first_name: string;
@@ -46,7 +47,7 @@ const RegisterPage = () =>{
         console.log(first_name)
        },[first_name])
 
-
+       const navigate= useNavigate()
 
        
         const handleClick = () => {
@@ -66,7 +67,8 @@ const RegisterPage = () =>{
                         "Content-Type": "application/json"}})
                       .then((res) => {
                          console.log(res)
-                        //  localStorage.setItem('token',res.data.authorisation.token);     
+                         localStorage.setItem('token',res.data.token);  
+                         navigate("/classes")
                          }).catch((err) => {
                             console.log(err);
                          })
