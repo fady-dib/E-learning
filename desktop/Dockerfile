@@ -1,7 +1,6 @@
 FROM node:alpine
 WORKDIR /app
-COPY package.json /.
+COPY package*.json /.
 RUN npm install
 COPY . /app
-CMD ["npm", "start"]
-
+CMD ["npm", "run", "electron:serve"]

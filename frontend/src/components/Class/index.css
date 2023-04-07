@@ -35,10 +35,10 @@
     .classes-content{
         padding:3%;
     }
-    
+/*     
     .list{
         color:var(--light)
-    }
+    } */
     
     .btn-class{
         background-color: var(--midnight) !important;
